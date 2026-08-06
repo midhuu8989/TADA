@@ -52,7 +52,7 @@ def _token_dashboard(job: store.Job | None) -> None:
             "Produces": spec.produces,
             "Last message": (run.get("message") or "-")[:70],
         })
-    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True,
+    st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True,
                  column_config={
                      "Tokens": st.column_config.NumberColumn(format="%d"),
                  })
@@ -203,7 +203,7 @@ def render() -> None:
         start_col, note_col = st.columns([1, 3])
         with start_col:
             start = st.button("Start the orchestrator", type="primary",
-                              use_container_width=True, disabled=not can_run)
+                              width="stretch", disabled=not can_run)
         with note_col:
             if can_run:
                 st.caption("Creates the job, then runs Agent 1. Every stage stops "
@@ -265,7 +265,7 @@ def render() -> None:
                             "Size (KB)": round(u["size_bytes"] / 1024, 1),
                             "Extracted characters": len(u["extracted_text"] or ""),
                         } for u in uploads_saved]),
-                        use_container_width=True, hide_index=True)
+                        width="stretch", hide_index=True)
                 else:
                     st.caption("No documentation was uploaded for this job.")
 
@@ -283,6 +283,6 @@ def render() -> None:
                             "Level": e["level"],
                             "Message": e["message"],
                         } for e in reversed(events)]),
-                        use_container_width=True, hide_index=True, height=320)
+                        width="stretch", hide_index=True, height=320)
                 else:
                     st.caption("No events recorded yet.")

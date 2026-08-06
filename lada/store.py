@@ -131,16 +131,39 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
 
 
+#: Journal mode is a persistent, database-level setting, so it only needs
+#: negotiating once per process rather than on every connection.
+_journal_mode: str | None = None
+
+_BUSY_TIMEOUT_MS = 30_000
+
+
 @contextmanager
 def connect() -> Iterator[sqlite3.Connection]:
-    """Short-lived connection; WAL keeps Streamlit reruns from blocking."""
+    """Short-lived connection; WAL keeps Streamlit reruns from blocking.
+
+    WAL needs to place a shared-memory file next to the database. Some container
+    filesystems cannot host one, and there the ``journal_mode`` pragma fails
+    outright - so the mode is negotiated once and a failure degrades to the
+    rollback journal instead of taking down every subsequent query with it.
+    """
+    global _journal_mode
+
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(config.DB_PATH, timeout=30, check_same_thread=False)
+    conn = sqlite3.connect(config.DB_PATH, timeout=_BUSY_TIMEOUT_MS / 1000,
+                           check_same_thread=False)
     conn.row_factory = sqlite3.Row
     try:
-        conn.execute("PRAGMA journal_mode=WAL")
+        # Set first: switching journal mode briefly wants an exclusive lock, and
+        # a concurrent reader should make it wait rather than raise immediately.
+        conn.execute(f"PRAGMA busy_timeout={_BUSY_TIMEOUT_MS}")
+        if _journal_mode is None:
+            try:
+                _journal_mode = conn.execute(
+                    "PRAGMA journal_mode=WAL").fetchone()[0]
+            except sqlite3.DatabaseError:
+                _journal_mode = "delete"
         conn.execute("PRAGMA foreign_keys=ON")
-        conn.execute("PRAGMA busy_timeout=30000")
         yield conn
         conn.commit()
     except Exception:

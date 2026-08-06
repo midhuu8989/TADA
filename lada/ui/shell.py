@@ -121,7 +121,7 @@ def sidebar() -> None:
     with st.sidebar:
         logo = graphics.logo_for(palette())
         if Path(logo).exists():
-            st.image(str(logo), use_container_width=True)
+            st.image(str(logo), width="stretch")
 
         st.markdown('<div class="lada-rail-head">Generative AI key</div>',
                     unsafe_allow_html=True)
@@ -196,10 +196,10 @@ def sidebar() -> None:
         st.divider()
         col_a, col_b = st.columns(2)
         with col_a:
-            if st.button("Jobs", use_container_width=True):
+            if st.button("Jobs", width="stretch"):
                 goto(PAGE_JOBS)
         with col_b:
-            if st.button("Admin", use_container_width=True):
+            if st.button("Admin", width="stretch"):
                 goto(PAGE_ADMIN)
         st.caption(f"LADA v{__import__('lada').__version__} · Career Shaper")
 
@@ -241,7 +241,7 @@ def job_picker(label: str = "Open an existing job") -> None:
                           format_func=lambda j: labels[j])
     left, right = st.columns([1, 4])
     with left:
-        if st.button("Open job", type="primary", use_container_width=True):
+        if st.button("Open job", type="primary", width="stretch"):
             st.session_state["job_id"] = chosen
             job = store.get_job(chosen)
             goto(f"agent{job.current_agent}" if job else PAGE_LANDING)

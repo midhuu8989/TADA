@@ -22,7 +22,7 @@ def _gate() -> bool:
         with st.form("admin_login", clear_on_submit=True):
             password = st.text_input("Admin password", type="password")
             submitted = st.form_submit_button("Unlock", type="primary",
-                                              use_container_width=True)
+                                              width="stretch")
         theme.card_close()
         if submitted:
             if security.verify_admin_password(password):
@@ -82,10 +82,10 @@ def _key_panel() -> None:
             col_a, col_b = st.columns(2)
             with col_a:
                 save = st.form_submit_button("Validate and save", type="primary",
-                                             use_container_width=True)
+                                             width="stretch")
             with col_b:
                 revalidate = st.form_submit_button("Re-validate stored key",
-                                                   use_container_width=True)
+                                                   width="stretch")
 
         if save:
             with st.spinner("Testing the key against the Gemini API..."):
@@ -192,7 +192,7 @@ def _token_log() -> None:
     } for index, row in enumerate(rows, 1)])
 
     st.dataframe(
-        table, use_container_width=True, hide_index=True, height=420,
+        table, width="stretch", hide_index=True, height=420,
         column_config={
             "Sr. No": st.column_config.NumberColumn(width="small"),
             "Token used by Agent": st.column_config.NumberColumn(format="%d"),
@@ -237,7 +237,7 @@ def _job_admin() -> None:
             "Created": job.created_at[:16].replace("T", " "),
             "Id": job.id,
         })
-    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
 
     with st.expander("Delete a job and its artifacts"):
         labels = {j.id: f"{j.asset_name[:44]} · {j.created_at[:16]}" for j in jobs}
@@ -267,7 +267,7 @@ def render() -> None:
 
     top_left, top_right = st.columns([4, 1])
     with top_right:
-        if st.button("Lock admin", use_container_width=True):
+        if st.button("Lock admin", width="stretch"):
             st.session_state["admin_unlocked"] = False
             st.rerun()
     st.write("")

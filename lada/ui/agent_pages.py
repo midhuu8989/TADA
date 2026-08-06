@@ -110,7 +110,7 @@ def _artifacts_panel(job: store.Job, agent_no: int) -> None:
             st.download_button(
                 "Download", path.read_bytes(), file_name=path.name,
                 mime=_MIME.get(kind, "application/octet-stream"),
-                key=f"dl-{agent_no}-{index}", use_container_width=True)
+                key=f"dl-{agent_no}-{index}", width="stretch")
 
     if len(artifacts) > 1:
         paths = [Path(a["path"]) for a in artifacts]
@@ -148,7 +148,7 @@ def _summary_agent1(payload: dict) -> None:
             "Sub-topics": sum(len(t.get("subtopics") or [])
                               for t in m.get("topics") or []),
             "Competency alignment": (m.get("competency_alignment") or "")[:90],
-        } for m in modules]), use_container_width=True, hide_index=True)
+        } for m in modules]), width="stretch", hide_index=True)
 
     with st.expander("Sections 1-5, 7 and 8"):
         st.markdown("**Programme overview**")
@@ -167,10 +167,10 @@ def _summary_agent1(payload: dict) -> None:
                 st.markdown(f"- {item}")
         st.markdown("**Pre-requisites (pre-qualifier blueprint)**")
         st.dataframe(pd.DataFrame(guide.get("prerequisites") or []),
-                     use_container_width=True, hide_index=True)
+                     width="stretch", hide_index=True)
         st.markdown("**Licences and subscriptions**")
         st.dataframe(pd.DataFrame(guide.get("licenses") or []),
-                     use_container_width=True, hide_index=True)
+                     width="stretch", hide_index=True)
 
     if payload.get("notes"):
         st.warning("Automatic corrections applied:\n\n"
@@ -197,7 +197,7 @@ def _summary_agent2(payload: dict) -> None:
         "Minutes": d.get("duration_minutes"),
         "Image slots": len(d.get("image_slots") or []),
         "Activities": d.get("activities"),
-    } for d in decks]), use_container_width=True, hide_index=True)
+    } for d in decks]), width="stretch", hide_index=True)
 
     for deck_info in decks:
         plan = deck_info.get("plan") or {}
@@ -210,7 +210,7 @@ def _summary_agent2(payload: dict) -> None:
                 "Voice-over (words)": len((s.get("voiceover") or "").split()),
                 "Voice-over script": s.get("voiceover"),
             } for s in plan.get("slides") or []]),
-                use_container_width=True, hide_index=True)
+                width="stretch", hide_index=True)
 
 
 def _summary_agent3(payload: dict) -> None:
@@ -231,7 +231,7 @@ def _summary_agent3(payload: dict) -> None:
         "Model-generated": d.get("ai_generated"),
         "On-brand": d.get("fallback_generated"),
     } for d in payload.get("decks") or []]),
-        use_container_width=True, hide_index=True)
+        width="stretch", hide_index=True)
 
     galleries = [d for d in payload.get("decks") or [] if d.get("image_dir")]
     if galleries:
@@ -245,7 +245,7 @@ def _summary_agent3(payload: dict) -> None:
                 for offset, image in enumerate(images[row_start:row_start + 4]):
                     with cols[offset]:
                         st.image(str(image), caption=image.stem,
-                                 use_container_width=True)
+                                 width="stretch")
 
 
 def _summary_agent4(payload: dict) -> None:
@@ -272,7 +272,7 @@ def _summary_agent4(payload: dict) -> None:
                     "Title": t.get("title"),
                     "Words": t.get("words"),
                     "Seconds": t.get("seconds"),
-                } for t in tracks]), use_container_width=True, hide_index=True)
+                } for t in tracks]), width="stretch", hide_index=True)
                 first = Path(deck_info.get("audio_dir", "")) / tracks[0]["file"]
                 if first.exists():
                     st.caption(f"Preview - slide {tracks[0]['slide_number']}")
@@ -401,7 +401,7 @@ def _review_panel(job: store.Job, agent_no: int) -> None:
     st.write("")
     col_rerun, col_next, col_note = st.columns([1, 1, 3])
     with col_rerun:
-        if st.button(f"Rerun {spec.short}", use_container_width=True,
+        if st.button(f"Rerun {spec.short}", width="stretch",
                      key=f"rerun-{agent_no}"):
             st.session_state[f"run_now_{agent_no}"] = True
             st.rerun()
@@ -409,7 +409,7 @@ def _review_panel(job: store.Job, agent_no: int) -> None:
         if not is_last:
             allowed, _ = orchestrator.gate_status(job.id, agent_no + 1)
             if st.button(f"Next: {config.AGENT_BY_NUMBER[agent_no + 1].short}",
-                         type="primary", use_container_width=True,
+                         type="primary", width="stretch",
                          disabled=not allowed, key=f"next-{agent_no}"):
                 store.update_job(job.id, current_agent=agent_no + 1)
                 shell.goto(f"agent{agent_no + 1}")
@@ -500,7 +500,7 @@ def render(agent_no: int) -> None:
         col_a, col_b = st.columns([1, 4])
         with col_a:
             if st.button(f"Run {spec.short}", type="primary",
-                         use_container_width=True, disabled=not can_run):
+                         width="stretch", disabled=not can_run):
                 triggered = True
         with col_b:
             st.caption(f"Produces: {spec.produces}. "
