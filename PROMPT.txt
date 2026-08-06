@@ -1,0 +1,85 @@
+The prompt for the multi-agent solution.
+ 
+Want to build a Streamlit well formatted  visually appealing Multi-Agent Content development Agentic AI Application (With coherent percistance) leveraging the HCLTech Brand Colors and used intelligently along with the below guidelines
+HCLTech Brand Colors
+The primary brand colors have evolved from the traditional "HCL Blue" to a more vibrant and diverse palette designed for digital-first platforms:
+* Primary Purple: Hex `#5F1EBE` (Purple Heart).
+* Primary Blue: Hex `#3C91FF` (Dodger Blue).
+* Secondary Teal/Green: Hex `#00A4A6` (Persian Green).
+* Dark Neutral: Hex `#00112b` (Midnight).
+These colors are often used in gradients to symbolize dynamism and the "supercharging" of digital transformation.
+www.mybrandbook.co.in +2
+HCLTech Logo
+The new logo marks a shift from the previous "HCL Technologies" branding to a simplified "HCLTech" wordmark.
+Analytics India Magazine +1
+* Design: The logo features the text "HCLTech" in a custom sans-serif font called HCLTech Roobert.
+* Symbolism: The italicized and slightly stretched characters are designed to convey speed, dynamism, and reliability.
+* Usage: It is typically presented in its signature blue or purple on a white background, or reversed in white on dark solid backgrounds.
+HCL Group +2
+Want an Admin Module accessed by Password "EdTech@123"
+Input box for the GenerativeAI API Key to be used by the multi-agent Application. This key is a global variable and will be used across all instance of usage. No need of entering the key again and again. The key to have a flag of Green "Active" or Red"In-Active". There should be message requesting for key to be available. When the key is active and available the Green "Active" label to be displayed else (" Use another key"). It should consider the correct key and validate the key by testing the key.
+In the Admin Module there should be a log of usage of the tokens consumed pertaining to the API Key 
+Sr. No as column 1; 
+Job Name as column 2;
+Agent Name as column 3;
+Token used by Agent as column 4;
+Landing Page:
+Heading (LEARNING ASSET DEVELOPMENT AGENT) with the Logo of Career Shaper
+Visually appealing left menu progression indicating Agent progression (Within Agent progress and across Agent progress denoted by the progress counter).
+Provide a sample of what type of inputs this Agent can process (About Subjects, curriculums, coverage, topics and sub-topics and duration.
+The main block to be for capturing the input of the 
+Capture the Name of the Asset to be developed.
+Provide the boxes to capture these meta-data of prompts for processing (Content and Coverage which could be copy pasted appropriately). Give easy to use interface, which is professional and visually appealing
+Provide an option for capturing the HEI Name or Enterprise Name/ Entity Name
+Duration of the training requiring the content in Hours 
+Provide an option to upload the Course/ program documentation/ guidesheet as appropriate for the University,
+There will be a dashboard of Tokens being used along with the progression of each Agent
+On recieving the inputs and the Start button will trigger the Agentic Orchestrator pickup the GenerativeAI API Key 
+Provide an optional place holder to paste the color pallete guideline as applicable. The default color palet will be the HCLTech and career Shaper mentioned below.
+Agent 1: Guide-Sheet Generator Agent (Well formatted follow the custom color palette of the default colors provided in the Excel to download, Each Table or Section in Excel has to have a block with dark blue background with white font, light blue gird lines, left justified word-wrapped smart content alignment and section block (Boundary with Dark Blue Grid Lines) Insert blank un formatted rows as space for a very visually appealing format all content Section Title content to start in Column B, and the content of the section to start in Column C,Column A will be blank without any GridLines and content)
+* Section 1: Program Overview for the input provided
+* Section 2: 5 Numbered Learning Objectives for the input provided
+* Section 3:  Numbered Learning outcome of what the learners will be able to understand and Numbered learning outcome of what the learner will be able to do
+* Section 4: Pre Requisite Knowledge and skill (WIth proper statement of knowledge and skill along with the weightage to provide as a blue print for the pre-qualifier Assessment)
+* Section 5: Competency pertaining to the following
+ - Competency to be able to work with Documentations (As critical and appropriate for the content and coverage provided )
+- Competency to be developed by implement Technology, Tools, and Process in and through the training program
+- Competency to be able to understand and comply with Policies, Standards (Inhouse and international), Best Practices and Guidelines as appropriate to the topics and coverage.
+- Competency to participate/ collaborate in Events and Ceremonies as appropriate (Relevant for development track).
+* Section 6: Detailed Training coverage
+Sr. No as Column 1;
+Module Name as column 2;
+Module Objective as Column 3;
+Hierarchical Numbering of meaningful and verbose word-wrapped Topics (With duration in hours) and SUb-Topics which is meaningful to the content, and coverage provided in the landing page as column 4
+Module Alignment with explanation to the competency in Section 4 as column 5
+Pedagogy example to be considered as column 6
+Total Duration Hours (Max 60 Min per module or less as as 15 min, or 30 min, or 45 min or 60 Min))
+Section 7: Post training assessment rubric, Structure and blue-print with coverage and the weightage to determine the effectiveness of training interms of knowledge and skill achieved through the training aligning to the learning outcome.
+Section 8; Details of the numbered SW Licenses and Subscription required for the training.
+Progress bar and the token consumption counter to be visible. Provide option to download, provide review comment along with the name of reviewer to be captured before we manually decide to move to next Agent with a Next Button.
+Agent 2: PowerPoint Presentation (Well formatted'  business professional color combination ) career Shaper logo on left top bar, page number and the confidentiality clause  with the title bar having the brand guideline with placeholder for image in each slide (Image generator Agent  (Agent 3) to generate appropriate image) The background of the body will be white and visually appealing bulleted points and description in each slide which is relevant for the coverage provided in the landing page aligned to the Guidesheet. These decks are to be divided into multiple decks of 60 min coverage and 35 slides each deck. Each slide to have the voice-over script in the presenter notes section of the slide, this will be used by the Audio enabling agent (Agent 4). 
+Each deck to start with the Fancy Title slide with relevant andvisually appealing Smart-Art boxes of text and image
+* IMpactful 5 Learning obective Smart-art impactful color-full slide with placeholder for image generated image
+* Agenda and coverage (Max 60 Min) for each deck as appropriate to the guide-sheet module and topics. With placeholder for image generation and updation.
+* Content slide will be divided into 
+ - Explanation and Key Terms Slide (Smart Art) with placeholder for image generator Agent to update.
+- Example/ sample scenarios as relevant and meaningful using fictitious names and business entities associated with the topic and sub-topics provide appropriate image place holder
+- Embedded Smart Activity content page associated with the topic like 2 MCQ with 5 option and 1 correct option (Choice of correct option will display "Well done" else "Try again" only 1 correct option will get "Well done". and 2 Fill in the blank with option to drag and drop the option in the blank space.
+provide appropriate image placeholder. 
+After all topics slides are completed. the Explanation for the activities in each topics will be provided with reference to the slide number and name where the explanation is obtained.
+Provide a recap slide and impactful relevant image place holder
+Provide a next module of coverage in the next deck (as available in the guidesheet Modules and Hierarchical Topic and sub-topics. With appropriate image placeholder
+Include professional voice-over script for each and every slide with opening script or navigation script, slide explanation script (Not more than 35 words)
+Provide option to download review and provide review comments to enhance. The reviewer name to be captured. Option to rerun the agent to update the deck should be available or move to the next agent.
+
+Agent 3: Open the PPT generated from
+Open the PPT (Deck) ; parse through the Deck, generate image per deck as appropriate to the title and content of the slide. Ensure no errors and spelling mistakes and ambiguity in the visually appealing image. Ensure background color as per the default HCLTech palette or the customized palate.
+Provide option to download review and provide review comments to enhance. The reviewer name to be captured. Option to rerun the agent to update the deck should be available or move to the next agent. 
+Agent 4: Audio adding Agent : Parse through the deck each slide add a smart and intelligent female Indian professional voice with option to control the speed available in the first slide. aligning to the voice-over script as available in the presenter notes section of each and every slide. 
+Provide option to download review and provide review comments to enhance. The reviewer name to be captured. Option to rerun the agent to update the deck should be available or move to the next agent.
+Agent 5: Deck Validator Agent, to validate and confirm the generated deck for authenticity, for plagiarism, for correctness of content, and image, for accuracy of the Activities, the feasibility. Ensure scores are provided with Tested OK and the comment why the content could be considered for use.
+Provide option to download review and provide review comments to enhance. The reviewer name to be captured. Option to rerun the agent to update the deck should be available.
+Ensure Coherent Persistence and Security with the API Key to be secured and not to be mis-used. Ensure that all the appropriate protocol for context and security and pipeline are used effectively.
+ 
+-- 
+ 

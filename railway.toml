@@ -1,0 +1,15 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+# Railway injects $PORT and routes to it; Streamlit must bind 0.0.0.0 to be
+# reachable from outside the container. --server.headless suppresses the
+# "open a browser" prompt that otherwise blocks a container start.
+startCommand = "streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true"
+
+# Streamlit's own liveness endpoint - returns "ok" once the server is serving.
+healthcheckPath = "/_stcore/health"
+healthcheckTimeout = 300
+
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
