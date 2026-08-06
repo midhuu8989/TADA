@@ -7,7 +7,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from .. import config, graphics, llm, orchestrator, store, theme
+from .. import config, graphics, llm, orchestrator, providers, store, theme
 
 PAGE_LANDING = "landing"
 PAGE_ADMIN = "admin"
@@ -23,6 +23,7 @@ def bootstrap() -> None:
     adopted = llm.bootstrap_key_from_env()
     if adopted:
         st.session_state["_key_from_env"] = adopted
+    providers.bootstrap_openai_key()
     st.session_state.setdefault("page", PAGE_LANDING)
     st.session_state.setdefault("admin_unlocked", False)
     st.session_state.setdefault("job_id", None)
